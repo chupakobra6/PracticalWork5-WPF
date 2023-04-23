@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PracticalWork5"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        WindowStartupLocation="CenterScreen"
+        Closed="Window_Closed"
+        ContentRendered="Window_ContentRendered"
+        Title="MainWindow" Height="450" Width="745">
     <Grid>
-        
+        <!-- no -->
     </Grid>
 </Window>

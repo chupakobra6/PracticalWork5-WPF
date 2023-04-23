@@ -1,17 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PracticalWork5
 {
@@ -20,9 +9,27 @@ namespace PracticalWork5
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static string daysSelectsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Calendar\\daysSelectsPath.json";
+
+        public MainPage mainPage = new MainPage();
         public MainWindow()
         {
             InitializeComponent();
+
+            Content = mainPage;
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Files.Serialization(DayItems.days, daysSelectsPath);
+        }
+
+        private void Window_ContentRendered(object sender, EventArgs e)
+        {
+            if (Content is MainPage mainPage)
+            {
+                mainPage.CreateUserControlsBasedOnDays();
+            }
         }
     }
 }
